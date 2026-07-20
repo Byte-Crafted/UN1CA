@@ -87,11 +87,11 @@ index 00000000..a3dc5958
 +
 +    invoke-interface {v1, v3, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
-+    invoke-static {}, Lio/mesalabs/unica/GamesPropsUtils;->createF5Props()Ljava/util/Map;
++    invoke-static {}, Lio/mesalabs/unica/GamesPropsUtils;->createP3Props()Ljava/util/Map;
 +
 +    move-result-object v3
 +
-+    const-string v4, "F5"
++    const-string v4, "P3"
 +
 +    invoke-interface {v0, v4, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
@@ -403,7 +403,7 @@ index 00000000..a3dc5958
 +    return-object v0
 +.end method
 +
-+.method private static blacklist createF5Props()Ljava/util/Map;
++.method private static blacklist createP3Props()Ljava/util/Map;
 +    .locals 3
 +    .annotation system Ldalvik/annotation/Signature;
 +        value = {
@@ -421,25 +421,25 @@ index 00000000..a3dc5958
 +
 +    const-string v1, "BRAND"
 +
-+    const-string v2, "POCO"
++    const-string v2, "realme"
 +
 +    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
 +    const-string v1, "DEVICE"
 +
-+    const-string v2, "marble"
++    const-string v2, "Realme P3"
 +
 +    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
 +    const-string v1, "MANUFACTURER"
 +
-+    const-string v2, "Xiaomi"
++    const-string v2, "realme"
 +
 +    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
 +    const-string v1, "MODEL"
 +
-+    const-string v2, "23049PCD8G"
++    const-string v2, "RMX5070"
 +
 +    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
