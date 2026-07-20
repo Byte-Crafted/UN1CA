@@ -7,10 +7,6 @@ on:
     branches:
       - 'sixteen'
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -18,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [a52sxq, a53x, a73xq, b0q, g0q, m52xq, o1s, p3s, r0q, r9s, t2s]
+        target: [r9q2, r9q]
 
     steps:
       - name: Checkout repo
@@ -80,4 +76,24 @@ jobs:
       - name: Build ROM
         run: |
           source ./buildenv.sh ${{ matrix.target }}
-          ./scripts/make_rom.sh
+          ./scripts/make_rom.sh --build-rom-zip
+
+      - name: Upload to GoFile
+        run: |
+          ZIP_FILE=$(find out -maxdepth 1 -type f -name "UN1CA*.zip" | head -n 1)
+
+          if [ -z "$ZIP_FILE" ]; then
+            echo "No ZIP file found!"
+            exit 1
+          fi
+
+          RESPONSE=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GOFILE_TOKEN }}" \
+            -F "file=@$ZIP_FILE" \
+            https://upload.gofile.io/uploadfile)
+
+          echo "Full response:"
+          echo "$RESPONSE" | jq
+
+          echo "Download link:"
+          echo "$RESPONSE" | jq -r '.data.downloadPage'
