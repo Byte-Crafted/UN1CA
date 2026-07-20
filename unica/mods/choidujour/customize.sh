@@ -1,10 +1,5 @@
 SKIPUNZIP=1
 
-if ! $ROM_IS_OFFICIAL; then
-    LOG "\033[0;33m! Build is not official. Skipping\033[0m"
-    return 0
-fi
-
 if [ ! "$(GET_PROP "system" "ro.unica.version")" ]; then
     SET_PROP "system" "ro.unica.version" "$ROM_VERSION"
 fi
