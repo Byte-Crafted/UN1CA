@@ -32,7 +32,8 @@ if [ ! -f "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" ]; then
 fi
 
 # Disable VaultKeeper support
-# Before: [tbnz w8, #0, #0xbd260]
-# After: [b #0xbd260]
-HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-    "2897773948050037" "289777392a000014"
+# Before: [tbnz w8, #0, #0xXXXXXX]
+# After: [b #0xXXXXXX]
+LOG "- Patching \"28f7773948050037\" to \"28f777392a000014\" in apex_payload/lib64/libbluetooth_jni.so"
+HEX_PATCH "$TMP_DIR/unknown/apex_payload/lib64/libbluetooth_jni.so" \
+    "28f7773948050037" "28f777392a000014" > /dev/null
